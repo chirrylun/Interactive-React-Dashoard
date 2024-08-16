@@ -14,7 +14,8 @@ module.exports = {
       },
     },
     colors: {
-      primary: "#010635"
+      primary: "#010635",
+      nav: "#E8E8E8"
     }
   },
   plugins: [],

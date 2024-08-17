@@ -1,13 +1,18 @@
 import TaskCard from "./components/TaskCard";
+import NameBar from "./components/NameBar";
 
 export default function Home() {
   return (
-    <main className="flex">
-      <div className="bg-primary max-w-xs w-full h-screen"></div>
-      <div className="block h-screen w-full">
-        <div className="h-18 h-screen"></div>
-        <div className="bg-nav h-full"></div>
+    <main className="flex h-screen">
+      <div className="bg-primary w-[20%]">
+        <NameBar/>
         
+      </div>
+
+      <div className="w-full">
+        <div className="h-[7%]"></div>
+        <div className="bg-nav h-[86%]"></div>
+        <div className="h-[7%]"></div>
       </div>
     </main>
   );

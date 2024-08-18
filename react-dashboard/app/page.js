@@ -1,11 +1,13 @@
 import TaskCard from "./components/TaskCard";
-import NewProfileCard from "./components/NewProfileCard";
+import ProfileCard from "./components/ProfileCard";
 
 export default function Home() {
   return (
     <main className="flex h-screen">
       <div className="bg-primary w-[20%]">
-        <NewProfileCard />
+        <div>
+          <ProfileCard />
+        </div>
       </div>
 
       <div className="w-full">

@@ -1,16 +1,14 @@
 "use client";
 import React from "react";
-import { useUserName } from "../hooks/useUserName";
+
 import InputForm from "./InputForm";
 
-const ProfileBar = () => {
-  const { userName, isUserName, setNewUserName, submitInfo } = useUserName();
+const ProfileField = ({userName}) => {
+  
 
   return (
     <div>
-      {isUserName ? (
-        <div className="rounded-full border-2 border-nav w-20 h-20"></div>
-      ) : (
+      
         <div>
           <InputForm
             userName={userName}
@@ -21,12 +19,12 @@ const ProfileBar = () => {
           <InputForm
             userName={userName}
             setNewUserName={setNewUserName}
-            placeholder={"Enter your email"}
+            placeholder={"Enter your username"}
           />
         </div>
-      )}
+   
     </div>
   );
 };
 
-export default ProfileBar;
+export default ProfileField;

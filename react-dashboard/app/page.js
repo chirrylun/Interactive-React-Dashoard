@@ -1,5 +1,7 @@
 import TaskCard from "./components/TaskCard";
 import ProfileCard from "./components/ProfileCard";
+import NavList from "./components/NavList";
+import { useUserDetails } from "./hooks/useUserDetails";
 
 export default function Home() {
   return (
@@ -7,6 +9,9 @@ export default function Home() {
       <div className="bg-primary w-[20%]">
         <div>
           <ProfileCard />
+          
+          <NavList/>
+
         </div>
       </div>
 

@@ -1,15 +1,20 @@
 "use client";
 import React, { useState } from "react";
 
-const InputForm = ({ userName, setNewUserName, placeholder, submitName }) => {
+
+const InputForm = ({ value, updateUserDetails, placeholder, submitName }) => {
+  
+   const handleChange = (e) => {
+    updateUserDetails(field, e.target.value)
+   } 
   return (
     <form>
       <input
         type="text"
-        value={userName}
+        value={value}
         placeholder={placeholder}
-        onChange={(e) => setNewUserName(e.target.value)}
-        className="p-2 my-1 font-sans rounded-md text-sm border-2 border-black w-full"
+        onChange={handleChange}
+        className="p-2 my-1 font-sans rounded-md text-sm border border-black w-full"
       ></input>
     </form>
   );

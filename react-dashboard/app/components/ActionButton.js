@@ -1,9 +1,9 @@
 import React from "react";
 
-const SubmitButton = ({ color, textColor, buttonText, handleSubmit }) => {
+const ActionButton = ({ color, textColor, buttonText, handleAction }) => {
   return (
     <button
-      onClick={handleSubmit}
+      onClick={handleAction}
       style={{ backgroundColor: color, color: textColor }}
       className="p-2 text-sm rounded-md font-sans hover:tracking-wide transition-all"
     >
@@ -12,4 +12,4 @@ const SubmitButton = ({ color, textColor, buttonText, handleSubmit }) => {
   );
 };
 
-export default SubmitButton;
+export default ActionButton;

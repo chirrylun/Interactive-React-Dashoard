@@ -1,7 +1,6 @@
-import TaskCard from "./components/TaskCard";
+
 import ProfileCard from "./components/ProfileCard";
-import NavList from "./components/NavList";
-import { useUserDetails } from "./hooks/useUserDetails";
+import TaskList from "./components/TaskList";
 
 export default function Home() {
   return (
@@ -10,7 +9,7 @@ export default function Home() {
         <div>
           <ProfileCard />
           
-          <NavList/>
+          <TaskList/>
 
         </div>
       </div>

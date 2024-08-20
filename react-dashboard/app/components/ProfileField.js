@@ -40,13 +40,15 @@ const ProfileField = ({
           <div>
             <InputForm
               value={userName}
-              updateUserDetails={updateUserDetails}
+              field={"name"}
+              updateDetails={updateUserDetails}
               placeholder={"Enter your username"}
             />
 
             <InputForm
               value={userEmail}
-              updateUserDetails={updateUserDetails}
+              field={"email"}
+              updateDetails={updateUserDetails}
               placeholder={"Enter your email"}
             />
 

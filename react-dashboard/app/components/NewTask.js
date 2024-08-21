@@ -3,7 +3,8 @@ import InputForm from "./InputForm";
 import TextareaForm from "./TextareaForm";
 import ActionButton from "./ActionButton";
 import { useAction } from "../hooks/useAction";
-import { useSubmit } from "../hooks/useSubmit";
+import { useRefreshList } from "../hooks/useRefreshList";
+
 
 const NewTask = ({ onClose, updateTaskInfo, taskName, taskDetails, addTask }) => {
   const action = async () => {
@@ -11,10 +12,15 @@ const NewTask = ({ onClose, updateTaskInfo, taskName, taskDetails, addTask }) =>
   };
 
   const { handleAction } = useAction(action);
-  const initialState = { name: taskName, details: taskDetails };
+  const {refreshList} = useRefreshList();
+
+ 
   const onSubmit = async () => {
-    addTask()
+    await addTask()
+    refreshList()
     onClose()
+
+  
   };
 
   return (

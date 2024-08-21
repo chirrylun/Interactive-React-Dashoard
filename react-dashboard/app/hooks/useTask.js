@@ -24,14 +24,22 @@ export function useTask() {
         taskName: "",
         taskDetails: "",
       });
+      refreshList()
     }
   };
 
   const deleteFromList = (index) => {
+   
     const updatedTaskList = [...taskList];
-    const newTaskList = updatedTaskList.splice(index, 1);
-    localStorage.setItem("tasks", JSON.stringify(newTaskList));
+    updatedTaskList.splice(index, 1);
+    localStorage.setItem("tasks", JSON.stringify(updatedTaskList));
+    refreshList()
   };
 
-  return { taskInfo, updateTaskInfo, taskList, addTask, deleteFromList };
+  const refreshList = () => {
+    console.log("refreshing list")
+    setTaskList(JSON.parse(localStorage.getItem("tasks")));
+  };
+
+  return { taskInfo, updateTaskInfo, taskList, setTaskList, addTask, deleteFromList, refreshList };
 }

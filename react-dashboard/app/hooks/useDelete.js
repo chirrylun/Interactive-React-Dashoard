@@ -7,6 +7,10 @@ export function useDelete() {
     setItemToDelete(index);
   };
 
+  const cancelDelete = () => {
+    setItemToDelete(null)
+  }
+
   const confirmDelete =() => {
     if (itemToDelete) {
     deleteFromList(itemToDelete)
@@ -14,5 +18,5 @@ export function useDelete() {
   }
 }
 
-  return {itemToDelete, deleteItem, confirmDelete}
+  return {itemToDelete, deleteItem, cancelDelete, confirmDelete}
 }

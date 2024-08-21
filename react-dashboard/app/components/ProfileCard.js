@@ -4,15 +4,17 @@ import CardContainer from "./CardContainer";
 import ProfileField from "./ProfileField";
 
 import { useUserDetails } from "../hooks/useUserDetails";
+import { useUserCheck } from "../hooks/useUserCheck";
 
 const ProfileCard = () => {
   const {
     userDetails,
-    isUserName,
     updateUserDetails,
    
   } = useUserDetails();
 
+  const {isUser, checkUser} = useUserCheck();
+ 
   return (
     <div className="m-2 rounded-sm shadow-md">
       <CardContainer
@@ -22,7 +24,8 @@ const ProfileCard = () => {
             userName={userDetails.name}
             userEmail={userDetails.email}
             updateUserDetails={updateUserDetails}
-            isUserName={isUserName}
+            isUserName={isUser}
+            checkUser={checkUser}
             
           />
         }

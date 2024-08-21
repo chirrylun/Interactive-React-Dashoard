@@ -5,7 +5,7 @@ import ActionButton from "./ActionButton";
 import { useAction } from "../hooks/useAction";
 import { useSubmit } from "../hooks/useSubmit";
 
-const NewTask = ({ onClose, updateTaskInfo, taskName, taskDetails }) => {
+const NewTask = ({ onClose, updateTaskInfo, taskName, taskDetails, addTask }) => {
   const action = async () => {
     onClose();
   };
@@ -13,8 +13,8 @@ const NewTask = ({ onClose, updateTaskInfo, taskName, taskDetails }) => {
   const { handleAction } = useAction(action);
   const initialState = { name: taskName, details: taskDetails };
   const onSubmit = async () => {
-    localStorage.setItem("taskname", taskName);
-    localStorage.setItem("taskdetails", taskDetails);
+    addTask()
+    onClose()
   };
 
   const { formData, handleSubmit } = useSubmit(initialState, onSubmit);
@@ -46,7 +46,7 @@ const NewTask = ({ onClose, updateTaskInfo, taskName, taskDetails }) => {
             buttonText={"Submit"}
             color={"#010635"}
             textColor={"#FFFFFF"}
-            handleAction={handleAction}
+            handleAction={addTask}
           />
         )}
       </div>

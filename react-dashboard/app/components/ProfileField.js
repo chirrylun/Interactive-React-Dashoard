@@ -11,11 +11,16 @@ const ProfileField = ({
   userEmail,
   updateUserDetails,
   isUserName,
+  checkUser
 }) => {
+  console.log("is",userName)
   const initialState = { name: userName, email: userEmail };
-  const onSubmit = async (data) => {
-    localStorage.setItem("username", data.username);
-    localStorage.setItem("useremail", data.useremail);
+  const onSubmit = async () => {
+ 
+    localStorage.setItem("username", userName);
+    localStorage.setItem("useremail", userEmail);
+    checkUser()
+
   };
   const { formData, handleSubmit } = useSubmit(initialState, onSubmit);
 
@@ -56,7 +61,7 @@ const ProfileField = ({
               color={"#010635"}
               textColor={"#FFFFFF"}
               buttonText={"Create Profile"}
-              handleSubmit={handleSubmit}
+              handleSubmit={onSubmit}
             />
           </div>
         </div>

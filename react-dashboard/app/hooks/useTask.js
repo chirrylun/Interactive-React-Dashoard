@@ -2,14 +2,13 @@
 import React, { useState, useEffect } from "react";
 
 export function useTask() {
-
   const [taskInfo, setTaskInfo] = useState({ taskName: "", taskDetails: "" });
   const [taskList, setTaskList] = useState([]);
 
   useEffect(() => {
     const storedTaskList = localStorage.getItem("tasks");
 
-    setTaskList(storedTaskList || "");
+    setTaskList(JSON.parse(storedTaskList) || []);
   }, []);
 
   const updateTaskInfo = (field, value) => {
@@ -18,7 +17,9 @@ export function useTask() {
 
   const addTask = () => {
     if (taskInfo.taskName && taskInfo.taskDetails) {
-      setTaskList([...taskList, taskInfo]);
+      const newTaskList = [...taskList, taskInfo];
+      setTaskList(newTaskList);
+      localStorage.setItem("tasks", JSON.stringify(newTaskList));
       setTaskInfo({
         taskName: "",
         taskDetails: "",
@@ -26,5 +27,11 @@ export function useTask() {
     }
   };
 
-  return { taskInfo, updateTaskInfo, taskList, addTask };
+  const deleteFromList = (index) => {
+    const updatedTaskList = [...taskList];
+    const newTaskList = updatedTaskList.splice(index, 1);
+    localStorage.setItem("tasks", JSON.stringify(newTaskList));
+  };
+
+  return { taskInfo, updateTaskInfo, taskList, addTask, deleteFromList };
 }

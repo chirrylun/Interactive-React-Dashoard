@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 export function useUserDetails() {
     const [userDetails, setUserDetails] = useState({name: "", email: ""})
-    const [isUserName, setIsUserName] = useState(false);
+ 
 
     useEffect(() => {
         const storedName = localStorage.getItem("username")
@@ -14,12 +14,13 @@ export function useUserDetails() {
           email: storedEmail || ""
         })
 
-        setIsUserName(!!storedName)
+      
         
     }, []);
 
     
   const updateUserDetails = (field, value) => {
+    console.log("field", field, "value", value)
     setUserDetails(prev => ({...prev, [field] : value}))
   }
 
@@ -27,6 +28,6 @@ export function useUserDetails() {
 
  
 
-  return { userDetails, isUserName, updateUserDetails};
+  return { userDetails, updateUserDetails};
 }
 

@@ -1,24 +1,27 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import CardContainer from "./CardContainer";
 import { useTask } from "../hooks/useTask";
 import Modal from "./Modal";
 import NewTask from "./NewTask";
-import { useCount } from "../hooks/useCount";
+import TaskItem from "./TaskItem";
 import { useAction } from "../hooks/useAction";
-import { useUserDetails } from "../hooks/useUserDetails";
+
 import ActionButton from "./ActionButton";
+import { TaskContext } from "../contexts/TaskContext";
+import { useUserCheck } from "../hooks/useUserCheck";
 
 const TaskList = () => {
-  const { taskInfo, updateTaskInfo} = useTask();
-  const {taskCount} = useCount();
-  const { isUserName } = useUserDetails();
+  const { taskInfo, updateTaskInfo, addTask, deleteFromList } = useTask();
+  const taskList = useContext(TaskContext);
+  const { isUser } = useUserCheck();
 
   const action = () => {
-    if (isUserName) {
+    if (isUser) {
       setIsOpen(true);
     }
   };
+
   const { handleAction } = useAction(action);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -26,26 +29,25 @@ const TaskList = () => {
     setIsOpen(false);
   };
 
-  if (isUserName) {
+  if (isUser) {
     return (
-      <div>
-        {taskCount <= 0 && !isOpen ? (
-          <div className="m-2">
-            <CardContainer
-              content={
-                <ActionButton
-                  handleAction={handleAction}
-                  buttonText={"+ Create a new task"}
-                />
-              }
-              bgColor={"#FFFFFF"}
-            />
-          </div>
-        ) : (
-          <p></p>
+      <div className="m-2">
+        {!isOpen && (
+          <CardContainer
+            content={
+              <ActionButton
+                handleAction={handleAction}
+                buttonText={"+ Create a new task"}
+                textColor={"#010635"}
+              />
+            }
+            bgColor={"#FFFFFF"}
+          />
         )}
+        
+
         {isOpen && (
-          <div className="m-2">
+          <div>
             <Modal
               isOpen={isOpen}
               content={
@@ -55,11 +57,18 @@ const TaskList = () => {
                   setIsOpen={setIsOpen}
                   updateTaskInfo={updateTaskInfo}
                   onClose={onClose}
+                  addTask={addTask}
                 />
               }
             />
           </div>
         )}
+
+        <div className="">
+          {taskList.map((task, index) => (
+            <TaskItem key={index} task={task} deleteFromList={deleteFromList} />
+          ))}
+        </div>
       </div>
     );
   }

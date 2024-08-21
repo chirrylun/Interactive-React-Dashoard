@@ -17,8 +17,6 @@ const NewTask = ({ onClose, updateTaskInfo, taskName, taskDetails, addTask }) =>
     onClose()
   };
 
-  const { formData, handleSubmit } = useSubmit(initialState, onSubmit);
-
   return (
     <div>
       <InputForm
@@ -46,7 +44,7 @@ const NewTask = ({ onClose, updateTaskInfo, taskName, taskDetails, addTask }) =>
             buttonText={"Submit"}
             color={"#010635"}
             textColor={"#FFFFFF"}
-            handleAction={addTask}
+            handleAction={onSubmit}
           />
         )}
       </div>

@@ -44,7 +44,6 @@ const TaskList = () => {
             bgColor={"#FFFFFF"}
           />
         )}
-        
 
         {isOpen && (
           <div>

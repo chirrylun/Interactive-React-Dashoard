@@ -1,32 +1,26 @@
 "use client";
 import React, { useContext, useState } from "react";
-import CardContainer from "./CardContainer";
+
 import { useTask } from "../hooks/useTask";
 import Modal from "./Modal";
 import NewTask from "./NewTask";
 import TaskItem from "./TaskItem";
-import { useAction } from "../hooks/useAction";
 
-import ActionButton from "./ActionButton";
 import { TaskContext } from "../contexts/TaskContext";
 import { useUserCheck } from "../hooks/useUserCheck";
 
-const TaskList = ({isOpen, setIsOpen}) => {
+const TaskList = ({ isOpen, setIsOpen }) => {
   const { taskInfo, updateTaskInfo, addTask, deleteFromList } = useTask();
   const taskList = useContext(TaskContext);
   const { isUser } = useUserCheck();
 
-  const onClose =()=> {
-    setIsOpen(false)
-  }
+  const onClose = () => {
+    setIsOpen(false);
+  };
 
-  
-
-  
-  
   if (isUser) {
     return (
-      <div className="m-2 overflow-y-auto no-scrollbar h-[90%]">
+      <div className="h-[99%]">
         {isOpen ? (
           <div>
             <Modal
@@ -35,7 +29,6 @@ const TaskList = ({isOpen, setIsOpen}) => {
                 <NewTask
                   taskName={taskInfo.taskName}
                   taskDetails={taskInfo.taskDetails}
-                
                   updateTaskInfo={updateTaskInfo}
                   onClose={onClose}
                   addTask={addTask}
@@ -44,7 +37,7 @@ const TaskList = ({isOpen, setIsOpen}) => {
             />
           </div>
         ) : (
-          <div className="">
+          <div className="m-2 p-2 border overflow-y-auto no-scrollbar rounded-md max-h-[100%] border-primary">
             {taskList.map((task, index) => (
               <TaskItem
                 index={index}

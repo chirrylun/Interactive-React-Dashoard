@@ -8,7 +8,7 @@ const StatBoard = () => {
 
   return (
     <div className="m-2">
-      <CardContainer bgColor={"#FFFFFF"} content={Stats} />
+      <CardContainer bgColor={"#FFFFFF"} content={<Stats/>} />
     </div>
   );
 };

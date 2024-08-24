@@ -9,7 +9,7 @@ const TaskItem = ({ index, task, deleteFromList }) => {
   const { deleteItem, itemToDelete, cancelDelete } = useDelete(deleteFromList);
 
   return (
-    <div className="bg-white border border-nav transition-all duration-300 hover:shadow-md flex flex-col gap-4 justify-between rounded-md my-2 p-2 font-sans">
+    <div className="bg-white border border-nav transition-all duration-300 hover:shadow-sm flex flex-col gap-4 justify-between rounded-md my-2 p-2 font-sans">
       {!itemToDelete ? (
         <div className="">
           <div className="border rounded-md mb-2 inline-block border-primary">

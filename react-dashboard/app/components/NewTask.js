@@ -24,7 +24,7 @@ const NewTask = ({
   };
 
   return (
-    <div>
+    <div className="m-2">
       <div>
         <h1 className="text-primary text-left font-sans text-xl font-bold mb-4">
           Create a new task

@@ -24,10 +24,10 @@ const NewTaskButton =({setIsOpen})=> {
               <ActionButton
                 handleAction={handleAction}
                 buttonText={"+ Create a new task"}
-                textColor={"#010635"}
+                textColor={"#FFFFFF"}
               />
             }
-            bgColor={"#F7F7F7"}
+            bgColor={"#010635"}
            
           />
         </div>

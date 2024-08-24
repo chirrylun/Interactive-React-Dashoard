@@ -2,15 +2,13 @@ import { useEffect, useState } from "react";
 
 export function useUserCheck() {
   const [isUser, setIsUser] = useState(false);
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     checkUser();
-  }, []);
+  }, [isUser]);
 
   const checkUser = () => {
-   
-    
     const storedUserName = localStorage.getItem("username");
 
     try {
@@ -19,11 +17,11 @@ export function useUserCheck() {
       } else {
         setIsUser(false);
       }
-      setIsLoading(false)
+      setIsLoading(false);
     } catch (error) {
       console.log("An error occured", error);
     }
   };
 
-  return { isUser, checkUser, isLoading };
+  return { isUser, setIsUser, checkUser, isLoading };
 }

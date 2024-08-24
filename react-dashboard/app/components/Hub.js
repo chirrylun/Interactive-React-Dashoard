@@ -4,13 +4,13 @@ import StatBoard from "./Statboard";
 import { useUserCheck } from "../hooks/useUserCheck";
 
 const Hub = () => {
-  const { isLoading } = useUserCheck();
+  const { isLoading, isUser } = useUserCheck();
 
   return (
     <div className="bg-primary w-[20%]">
       <div>
         <ProfileCard />
-        {!isLoading && <StatBoard />}
+        {!isLoading && isUser && <StatBoard />}
       </div>
     </div>
   );

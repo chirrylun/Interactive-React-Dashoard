@@ -13,6 +13,7 @@ const ProfileField = ({
   updateUserDetails,
   isUserName,
   checkUser,
+  setIsUser,
   isLoading,
 }) => {
  
@@ -20,7 +21,7 @@ const ProfileField = ({
   const onSubmit = async () => {
     localStorage.setItem("username", userName);
     localStorage.setItem("useremail", userEmail);
-    checkUser();
+    setIsUser(true)
   };
   const { formData, handleSubmit } = useSubmit(initialState, onSubmit);
 

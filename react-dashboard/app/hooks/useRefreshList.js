@@ -1,14 +1,11 @@
-"use client";
-import { useEffect } from "react";
-import { useTask } from "./useTask";
+import React, { useEffect } from "react";
 
 export function useRefreshList() {
-  const { taskList, refreshList } = useTask();
-  useEffect(() => {
-    refreshList();
-  }, [taskList]);
+    const {refreshList} = useRefreshList()
+    useEffect(()=> {
+        refreshList()
+    }, [])
 
-  
-
-  return {refreshList}
+    
 }
+

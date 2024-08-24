@@ -15,7 +15,7 @@ const InputForm = ({ value, updateDetails, placeholder, field }) => {
         value={value}
         placeholder={placeholder}
         onChange={handleChange}
-        className="p-2 my-1 font-sans rounded-md text-sm border border-black w-full"
+        className="p-2 my-1 font-sans rounded-md text-sm border border-nav w-full"
       ></input>
     </form>
   );

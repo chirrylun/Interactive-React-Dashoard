@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Hub from "./Hub";
-import WorkSpace from "./WorkSpace";
+import TaskBoard from "./TaskBoard";
 import { TaskContext } from "../contexts/TaskContext";
 import { useTask } from "../hooks/useTask";
 
@@ -11,7 +11,7 @@ const Dashboard = () => {
     <div className="h-screen flex ">
       <TaskContext.Provider value={taskList}>
         <Hub />
-        <WorkSpace />
+        <TaskBoard />
       </TaskContext.Provider>
     </div>
   );

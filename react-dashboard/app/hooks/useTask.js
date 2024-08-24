@@ -1,15 +1,19 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export function useTask() {
   const [taskInfo, setTaskInfo] = useState({ taskName: "", taskDetails: "" });
   const [taskList, setTaskList] = useState([]);
 
   useEffect(() => {
-    const storedTaskList = localStorage.getItem("tasks");
-
-    setTaskList(JSON.parse(storedTaskList) || []);
+   refreshList()
   }, []);
+
+  const refreshList = () => {
+    
+    const storedTaskList = localStorage.getItem("tasks");
+    setTaskList(JSON.parse(storedTaskList) || []);
+  };
 
   const updateTaskInfo = (field, value) => {
     setTaskInfo((prev) => ({ ...prev, [field]: value }));
@@ -26,20 +30,23 @@ export function useTask() {
       });
       refreshList()
     }
+   
   };
 
   const deleteFromList = (index) => {
-   
     const updatedTaskList = [...taskList];
     updatedTaskList.splice(index, 1);
     localStorage.setItem("tasks", JSON.stringify(updatedTaskList));
     refreshList()
   };
 
-  const refreshList = () => {
-    console.log("refreshing list")
-    setTaskList(JSON.parse(localStorage.getItem("tasks")));
+  return {
+    taskInfo,
+    updateTaskInfo,
+    taskList,
+    setTaskList,
+    addTask,
+    deleteFromList,
+    refreshList
   };
-
-  return { taskInfo, updateTaskInfo, taskList, setTaskList, addTask, deleteFromList, refreshList };
 }

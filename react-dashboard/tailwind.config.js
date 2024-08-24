@@ -17,7 +17,7 @@ module.exports = {
     },
     colors: {
       primary: "#010635",
-      nav: "#F7F7F7",
+      nav: "#e0e0e0",
       white: "#FFFFFF"
     },
     fontFamily: {

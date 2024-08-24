@@ -4,6 +4,7 @@ import SubmitButton from "./SubmitButton";
 import CardContainer from "./CardContainer";
 import UserBar from "./UserBar";
 import InputForm from "./InputForm";
+import LoadingBar from "./LoadingBar";
 import { useSubmit } from "../hooks/useSubmit";
 
 const ProfileField = ({
@@ -11,19 +12,24 @@ const ProfileField = ({
   userEmail,
   updateUserDetails,
   isUserName,
-  checkUser
+  checkUser,
+  isLoading,
 }) => {
-  console.log("is",userName)
+ 
   const initialState = { name: userName, email: userEmail };
   const onSubmit = async () => {
- 
     localStorage.setItem("username", userName);
     localStorage.setItem("useremail", userEmail);
-    checkUser()
-
+    checkUser();
   };
   const { formData, handleSubmit } = useSubmit(initialState, onSubmit);
 
+  
+  if (isLoading){
+    return(
+      <CardContainer bgColor={"FFFFFF"} content={<LoadingBar/>}/>
+    )
+  }
   return (
     <div>
       {!isUserName ? (
@@ -41,6 +47,7 @@ const ProfileField = ({
 
           <h1 className="font-sans text-primary text-md my-2">
             Create a new profile to get started
+            {isLoading && (<CardContainer content={"Loading"}/>)}
           </h1>
           <div>
             <InputForm

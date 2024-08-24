@@ -1,7 +1,11 @@
 import { useState } from "react";
 
-export function useDelete() {
+
+
+export function useDelete(deleteFromList) {
   const [itemToDelete, setItemToDelete] = useState(null);
+
+ 
 
   const deleteItem = (index) => {
     setItemToDelete(index);
@@ -15,6 +19,8 @@ export function useDelete() {
     if (itemToDelete) {
     deleteFromList(itemToDelete)
     setItemToDelete(null)
+
+
   }
 }
 

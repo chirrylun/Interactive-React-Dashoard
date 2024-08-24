@@ -1,14 +1,14 @@
 import React from "react";
 import ProfileCard from "./ProfileCard";
-import TaskList from "./TaskList";
+import StatBoard from "./Statboard";
 
 const Hub = () => {
   return (
     <div className="bg-primary w-[20%]">
       <div>
         <ProfileCard />
-
-        <TaskList />
+        <StatBoard/>
+        
       </div>
     </div>
   );

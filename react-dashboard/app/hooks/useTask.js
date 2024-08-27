@@ -28,7 +28,7 @@ export function useTask() {
         taskName: "",
         taskDetails: "",
       });
-      refreshList()
+      
     }
    
   };
@@ -37,7 +37,7 @@ export function useTask() {
     const updatedTaskList = [...taskList];
     updatedTaskList.splice(index, 1);
     localStorage.setItem("tasks", JSON.stringify(updatedTaskList));
-    refreshList()
+    
   };
 
   return {

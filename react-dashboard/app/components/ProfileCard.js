@@ -10,10 +10,12 @@ const ProfileCard = () => {
   const {
     userDetails,
     updateUserDetails,
-   
+    refreshDetails
   } = useUserDetails();
 
-  const {isUser, checkUser, setIsUser, isLoading} = useUserCheck();
+  const {isUser, setIsUser, checkUser, isLoading} = useUserCheck();
+
+  console.log("user details is", userDetails.name)
  
   return (
     <div className="m-2 rounded-sm shadow-md">
@@ -26,8 +28,9 @@ const ProfileCard = () => {
             updateUserDetails={updateUserDetails}
             isUserName={isUser}
             checkUser={checkUser}
-            setIsUser={setIsUser}
             isLoading={isLoading}
+            setIsUser={setIsUser}
+            refreshDetails={refreshDetails}
             
           />
         }

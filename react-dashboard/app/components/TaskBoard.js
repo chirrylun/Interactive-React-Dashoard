@@ -4,6 +4,7 @@ import NewTaskButton from "./NewTaskButton";
 import NewTask from "./NewTask";
 import { useTask } from "../hooks/useTask";
 import { useUserCheck } from "../hooks/useUserCheck";
+import { UserContext } from "../contexts/UserContext";
 
 const TaskBoard = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,17 +12,21 @@ const TaskBoard = () => {
   const onClose = () => {
     setIsOpen(false);
   };
-  const { isLoading, isUser } = useUserCheck();
+  const { isLoading } = useUserCheck();
+  const isUser =useContext(UserContext)
 
+  console.log("is User is", isUser)
   const projectConcepts = [
     "Javascript",
     "Next.js",
     "React fundamentals",
     "State management",
     "Reusable components",
-    "Using local Storage",
+    
     "Tailwind CSS & Styling",
   ];
+
+  console.log("is User is", isUser)
 
   return (
     <div className="w-full">
@@ -49,6 +54,10 @@ const TaskBoard = () => {
                   {item}
                 </p>
               ))}
+            </div>
+
+            <div>
+                <p className="mt-4 font-bold text-xl ">Create a new profile to get started</p>
             </div>
           </div>
 

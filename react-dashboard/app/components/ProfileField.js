@@ -12,24 +12,22 @@ const ProfileField = ({
   userEmail,
   updateUserDetails,
   isUserName,
-  checkUser,
+  refreshDetails,
   setIsUser,
   isLoading,
 }) => {
- 
   const initialState = { name: userName, email: userEmail };
   const onSubmit = async () => {
+   
     localStorage.setItem("username", userName);
     localStorage.setItem("useremail", userEmail);
-    setIsUser(true)
+    refreshDetails()
+    setIsUser(true);
   };
   const { formData, handleSubmit } = useSubmit(initialState, onSubmit);
 
-  
-  if (isLoading){
-    return(
-      <CardContainer bgColor={"FFFFFF"} content={<LoadingBar/>}/>
-    )
+  if (isLoading) {
+    return <CardContainer bgColor={"FFFFFF"} content={<LoadingBar />} />;
   }
   return (
     <div>
@@ -46,24 +44,28 @@ const ProfileField = ({
             }
           />
 
-          <h1 className="font-sans text-primary text-md my-2">
-            Create a new profile to get started
-            {isLoading && (<CardContainer content={"Loading"}/>)}
-          </h1>
-          <div>
-            <InputForm
-              value={userName}
-              field={"name"}
-              updateDetails={updateUserDetails}
-              placeholder={"Enter your username"}
-            />
+          <div className="mt-2">
+            <div>
+              <p className="text-primary mb-1">Username</p>
+              <InputForm
+                value={userName}
+                field={"name"}
+                updateDetails={updateUserDetails}
+                placeholder={"Enter your username"}
+              />
+            </div>
 
-            <InputForm
+            <div className="mt-3 mb-2">
+              <p className="text-primary">Email</p>
+              <InputForm
               value={userEmail}
               field={"email"}
               updateDetails={updateUserDetails}
               placeholder={"Enter your email"}
             />
+            </div>
+
+            
 
             <SubmitButton
               color={"#010635"}
